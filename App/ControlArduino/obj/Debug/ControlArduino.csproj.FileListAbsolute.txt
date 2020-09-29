@@ -92,3 +92,4 @@ C:\Users\faacu\source\repos\Proyecto-App\App\ControlArduino\obj\Debug\ControlArd
 C:\Users\faacu\source\repos\Proyecto-App\App\ControlArduino\obj\Debug\ControlArduino.csproj.CopyComplete
 C:\Users\faacu\source\repos\Proyecto-App\App\ControlArduino\obj\Debug\ControlArduino.dll
 C:\Users\faacu\source\repos\Proyecto-App\App\ControlArduino\obj\Debug\ControlArduino.pdb
+C:\Users\faacu\source\repos\Proyecto-App\App\ControlArduino\obj\Debug\ControlArduino.csprojAssemblyReference.cache

@@ -12,10 +12,10 @@ namespace App.Controllers
 {
     public class LedController : Controller
     {
-        //public string routeControllerPath = "http://192.168.0.13/Led/ModificarLed";//ruta para usar cuando s publica
-        public string routeControllerPath = "https://localhost:44354/Led/ModificarLed";//ruta de debug para prebas
-        //String serviceArduinoPath = "http://192.168.0.13:70/api/Notification";//ruta para usar cuando s publica
-        public string serviceArduinoPath = "https://localhost:44324/api/Notification";//ruta de debug para prebas
+        public string routeControllerPath = "http://192.168.0.13/Led/ModificarLed";//ruta para usar cuando s publica
+        //public string routeControllerPath = "https://localhost:44354/Led/ModificarLed";//ruta de debug para prebas
+        String serviceArduinoPath = "http://192.168.0.13:70/api/Notification";//ruta para usar cuando s publica
+        //public string serviceArduinoPath = "https://localhost:44324/api/Notification";//ruta de debug para prebas
 
         
         // GET: Led
