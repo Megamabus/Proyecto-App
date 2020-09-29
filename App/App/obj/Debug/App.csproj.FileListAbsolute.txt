@@ -171,3 +171,4 @@ C:\Users\faacu\source\repos\Proyecto-App\App\App\obj\Debug\App.csproj.CoreCompil
 C:\Users\faacu\source\repos\Proyecto-App\App\App\obj\Debug\App.csproj.CopyComplete
 C:\Users\faacu\source\repos\Proyecto-App\App\App\obj\Debug\App.dll
 C:\Users\faacu\source\repos\Proyecto-App\App\App\obj\Debug\App.pdb
+C:\Users\faacu\source\repos\Proyecto-App\App\App\obj\Debug\App.csprojAssemblyReference.cache

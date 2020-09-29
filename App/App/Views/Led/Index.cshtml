@@ -61,8 +61,6 @@
             }
         });
     </script>
-
-
     <script>
         // Obtenemos el valor por el tipo de tag
         String.prototype.convertToRGB = function () {
@@ -92,7 +90,9 @@
             var color = porTagName.removeCharAt(1).convertToRGB();
             console.log(color[0]);
 
-            fetch('http://192.168.0.13/Led/ModificarLed', {
+            var routeControllerPath= '@Html.Raw(ViewBag.routeControllerPath)';
+
+            fetch(routeControllerPath, {
                 method: 'POST',
                 body: JSON.stringify({
                     "R": color[0],
