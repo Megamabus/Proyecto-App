@@ -26,7 +26,7 @@ namespace App.Controllers
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://localhost:44368/api/Notification");
+                client.BaseAddress = new Uri("http://192.168.0.13:70/api/Notification");
                 var postJob = client.PostAsJsonAsync<NotificationViewModel>("notification", RGB);
                 postJob.Wait();
 

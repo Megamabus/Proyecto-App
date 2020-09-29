@@ -92,7 +92,7 @@
             var color = porTagName.removeCharAt(1).convertToRGB();
             console.log(color[0]);
 
-            fetch('https://localhost:44354/Led/ModificarLed', {
+            fetch('http://192.168.0.13/Led/ModificarLed', {
                 method: 'POST',
                 body: JSON.stringify({
                     "R": color[0],

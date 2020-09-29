@@ -4,7 +4,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_PublishTargetUrl>C:\inetpub\App</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\inetpub\wwwroot\Proyecto-App</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
@@ -14,10 +14,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/27/2020 16:54:43</publishTime>
     </File>
     <File Include="bin/App.dll">
-      <publishTime>09/29/2020 00:30:38</publishTime>
+      <publishTime>09/29/2020 02:24:43</publishTime>
     </File>
     <File Include="bin/App.pdb">
-      <publishTime>09/29/2020 00:30:38</publishTime>
+      <publishTime>09/29/2020 02:24:43</publishTime>
     </File>
     <File Include="bin/es/System.Net.Http.Formatting.resources.dll">
       <publishTime>11/28/2018 13:00:46</publishTime>
@@ -92,10 +92,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/27/2020 16:54:43</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
-      <publishTime>12/05/2017 09:36:44</publishTime>
+      <publishTime>09/27/2020 16:54:44</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
-      <publishTime>12/05/2017 09:36:44</publishTime>
+      <publishTime>09/27/2020 16:54:44</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Managed.Core.targets">
       <publishTime>09/27/2020 16:54:44</publishTime>
@@ -146,7 +146,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/27/2020 16:54:44</publishTime>
     </File>
     <File Include="bin/roslyn/System.Reflection.Metadata.dll">
-      <publishTime>05/16/2018 03:29:44</publishTime>
+      <publishTime>09/27/2020 16:54:44</publishTime>
     </File>
     <File Include="bin/roslyn/System.Runtime.InteropServices.RuntimeInformation.dll">
       <publishTime>09/27/2020 16:54:44</publishTime>
@@ -323,7 +323,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/15/2020 16:40:42</publishTime>
     </File>
     <File Include="Views/Led/Index.cshtml">
-      <publishTime>09/27/2020 16:54:42</publishTime>
+      <publishTime>09/29/2020 02:22:14</publishTime>
     </File>
     <File Include="Views/Led/ModificarLed.cshtml">
       <publishTime>09/27/2020 16:54:42</publishTime>
@@ -332,7 +332,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/15/2020 16:40:42</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>09/15/2020 16:40:42</publishTime>
+      <publishTime>09/27/2020 16:54:42</publishTime>
     </File>
     <File Include="Views/Tacos/Index.cshtml">
       <publishTime>09/27/2020 16:54:42</publishTime>
@@ -344,7 +344,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/15/2020 16:40:42</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/29/2020 00:28:05</publishTime>
+      <publishTime>09/29/2020 01:10:44</publishTime>
     </File>
   </ItemGroup>
 </Project>
