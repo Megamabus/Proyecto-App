@@ -88,7 +88,6 @@ C:\Users\faacu\source\repos\Proyecto-App\App\ControlArduino\bin\es\System.Web.Ra
 C:\Users\faacu\source\repos\Proyecto-App\App\ControlArduino\bin\es\System.Web.WebPages.resources.dll
 C:\Users\faacu\source\repos\Proyecto-App\App\ControlArduino\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\faacu\source\repos\Proyecto-App\App\ControlArduino\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\faacu\source\repos\Proyecto-App\App\ControlArduino\obj\Debug\ControlArduino.csprojAssemblyReference.cache
 C:\Users\faacu\source\repos\Proyecto-App\App\ControlArduino\obj\Debug\ControlArduino.csproj.CoreCompileInputs.cache
 C:\Users\faacu\source\repos\Proyecto-App\App\ControlArduino\obj\Debug\ControlArduino.csproj.CopyComplete
 C:\Users\faacu\source\repos\Proyecto-App\App\ControlArduino\obj\Debug\ControlArduino.dll
