@@ -7,20 +7,38 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlArduino", "ControlArduino\ControlArduino.csproj", "{5C2E4D4A-166D-4133-B76B-D5E7724E9003}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SketchArduino", "SketchArduino\SketchArduino.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DD27C830-C516-4EBD-ACFD-E2EA55551387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DD27C830-C516-4EBD-ACFD-E2EA55551387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD27C830-C516-4EBD-ACFD-E2EA55551387}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DD27C830-C516-4EBD-ACFD-E2EA55551387}.Debug|x86.Build.0 = Debug|Any CPU
 		{DD27C830-C516-4EBD-ACFD-E2EA55551387}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD27C830-C516-4EBD-ACFD-E2EA55551387}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD27C830-C516-4EBD-ACFD-E2EA55551387}.Release|x86.ActiveCfg = Release|Any CPU
+		{DD27C830-C516-4EBD-ACFD-E2EA55551387}.Release|x86.Build.0 = Release|Any CPU
 		{5C2E4D4A-166D-4133-B76B-D5E7724E9003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5C2E4D4A-166D-4133-B76B-D5E7724E9003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C2E4D4A-166D-4133-B76B-D5E7724E9003}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5C2E4D4A-166D-4133-B76B-D5E7724E9003}.Debug|x86.Build.0 = Debug|Any CPU
 		{5C2E4D4A-166D-4133-B76B-D5E7724E9003}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C2E4D4A-166D-4133-B76B-D5E7724E9003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C2E4D4A-166D-4133-B76B-D5E7724E9003}.Release|x86.ActiveCfg = Release|Any CPU
+		{5C2E4D4A-166D-4133-B76B-D5E7724E9003}.Release|x86.Build.0 = Release|Any CPU
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.ActiveCfg = Debug|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.Build.0 = Debug|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|Any CPU.ActiveCfg = Release|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.ActiveCfg = Release|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
