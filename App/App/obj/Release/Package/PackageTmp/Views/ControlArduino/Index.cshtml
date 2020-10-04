@@ -6,23 +6,34 @@
 
 <h2>Control Led</h2>
 
+
 <div class="container">
-    <center>
+    <div class="row">
 
-        <div>
-            <a class="btn btn-primary btn-lg" onclick="ObtenerValor();">Seleccionar color</a>
+        <div class="col-lg-6">
+            <center>
+
+                <a class="btn btn-primary btn-lg" onclick="ObtenerValor();">Seleccionar color</a>
+
+                <br />
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Toca el cuadrado de color para buscar un color y apreta el boton seleccionar para cambiar el color del led.</h4>
+                </div>
+                <br /><br />
+
+                <div class="color-picker" style="height: 500px;"></div>
+
+                <br />
+
+            </center>
         </div>
-        <br />
-        <div class="alert alert-success" role="alert">
-            <h4 class="alert-heading">Toca el cuadrado de color para buscar un color y apreta el boton seleccionar para cambiar el color del led.</h4>
+        <div class="col-lg-6">
+            <center>
+                <a id="btnSend" class="btn btn-success btn-lg" >icono</a>
+            </center>
         </div>
-        <br /><br />
-        <div class="color-picker" style="height: 500px;"></div>
 
-        <br />
-
-
-    </center>
+    </div>
 </div>
 
 
@@ -109,9 +120,9 @@
             var color = porTagName.removeCharAt(1).convertToRGB();
             console.log(color[0]);
 
-            var routeControllerPath= '@Html.Raw(ViewBag.routeControllerPath)';
+            var mvcMainPagePath = '@Html.Raw(ViewBag.mvcMainPagePath)' + 'ControlArduino/ModificarLed';
 
-            fetch(routeControllerPath, {
+            fetch(mvcMainPagePath, {
                 method: 'POST',
                 body: JSON.stringify({
                     "R": color[0],
@@ -119,13 +130,35 @@
                     "B": color[2]
                 }),
                 headers: {
-                    "Content-type": "application/json; charset=UTF-8"
+                    "Content-type": "application/json; charset=UTF-8",
                 }
             })
                 .then(response => response.json())
                 .then(json => console.log(json))
         }
-    </script>     
+    </script>  
+    
+    <script type="text/javascript">
+        $(function () {
+            $('#btnSend').click(function () {
+                var notification = { Id: 1 }
+
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json; charset=UTF-8",
+                    data: "{notification:" + JSON.stringify(notification) + "}",
+                    url: "/ControlArduino/SetearRele",
+                    success: function (data) {
+                        console.log("se envio data a : /ControlArduino/SetearRele");
+                    },
+                    error: function (result) {
+                        console.log("fallo llamada ajax");
+                    }
+                });
+            })
+        });
+
+    </script>
 }
 
 

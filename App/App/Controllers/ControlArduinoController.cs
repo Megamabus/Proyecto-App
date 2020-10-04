@@ -17,12 +17,12 @@ namespace App.Controllers
         //public string serviceArduinoPath = "http://192.168.0.13:70/";//ruta para usar cuando s publica
 
         //ParaVisualStudio
-        public string mvcMainPagePath = "https://localhost:44354/";//ruta de debug para prebas
-        public string serviceArduinoPath = "https://localhost:44324/";//ruta de debug para prebas
+        //public string mvcMainPagePath = "https://localhost:44354/";//ruta de debug para prebas
+        //public string serviceArduinoPath = "https://localhost:44324/";//ruta de debug para prebas
 
         //ParaLocalhost
-        //public string mvcMainPagePath = "http://localhost/";//ruta de debug para prebas
-        //public string serviceArduinoPath = "http://localhost:8010/";//ruta de debug para prebas
+        public string mvcMainPagePath = "http://localhost/";//ruta de debug para prebas
+        public string serviceArduinoPath = "http://localhost:8010/";//ruta de debug para prebas
 
 
         // GET: Led
