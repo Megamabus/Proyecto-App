@@ -6,7 +6,7 @@ using System.Web;
 
 namespace DataCube.Server.Communications
 {
-    public static class SerialCommunication
+    public static class SerialCommunication 
     {
         public static SerialPort serialConnection;
 
@@ -23,9 +23,14 @@ namespace DataCube.Server.Communications
                 serialConnection.Close();
         }
 
-        public static void Write(byte[] data)
+        public static void Write(string data)
         {
-            serialConnection.Write(data, 0, 3);
+            serialConnection.Write(data);
+        }
+
+        public static int ReadChar()
+        {
+            return serialConnection.ReadChar();
         }
     }
 }
