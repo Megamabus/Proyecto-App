@@ -287,10 +287,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Tacos\Index.cshtml" />
     <Content Include="Views\ControlArduino\Index.cshtml" />
+    <Content Include="Views\Camara\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Camara\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
