@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+ 
+<div class="container">
+    <center>
+        <div class="row thumbnail" style="background-color:black;">
+            <div class="col-lg-6">
+                <br />
+                <div class="thumbnail" >
+                    <!-- Stream video via webcam -->
+                    <video id="video" playsinline autoplay></video>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <br />
+                <div class="thumbnail ">
+                    <!-- Webcam video snapshot -->
+                    <canvas id="canvas" width="250" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trigger canvas web API -->
+        <div class="controller">
+            <button id="snap">Capture</button>
+        </div>
+    </center>
+</div>
+
+<script>
+    'use strict';
+
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const snap = document.getElementById("snap");
+    const errorMsgElement = document.querySelector('span#errorMsg');
+
+    const constraints = {
+        audio: false,
+        video: {
+            width: 250, height: 250
+        }
+    };
+
+    // Access webcam
+    async function init() {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia(constraints);
+            handleSuccess(stream);
+        } catch (e) {
+            errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+        }
+    }
+
+    // Success
+    function handleSuccess(stream) {
+        window.stream = stream;
+        video.srcObject = stream;
+    }
+
+    // Load init
+    init();
+
+    // Draw image
+    var context = canvas.getContext('2d');
+    snap.addEventListener("click", function () {
+        context.drawImage(video, 0, 0, 250, 250);//(obeto,ubicacionHorizontal,ubicacionVertical,altura,anchura)
+    });
+</script>
