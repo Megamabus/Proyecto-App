@@ -16,6 +16,9 @@ namespace App
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/vue").Include(
+                        "~/Scripts/vue.js"));
+
             //bundles.Add(new ScriptBundle("~/bundles/pickr", "https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"));
             //bundles.Add(new ScriptBundle("~/bundles/pickr-es5", "https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js"));
 

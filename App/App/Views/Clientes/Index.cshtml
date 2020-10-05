@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div id="root">
+    <h1>{{mensaje}}</h1>
+    <input class="form-control" placeholder="Buscar" type="text" v-model="txtBuscar" />
+    <div>
+        <ul>
+            <li v-for="item in listaFiltrada">{{item.Id}} : {{item.Nombre}} - {{item.Direccion}}</li>
+        </ul>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        var url = '@Url.RouteUrl("Default")';
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: "#root",
+            data: {
+                mensaje: "hola puto",
+                lista: [],
+                txtBuscar: ""
+            },
+            computed: { 
+                listaFiltrada: function () {
+                    var arreglo = this.lista;
+                    var query = this.txtBuscar;
+
+                    if (query !== "") {
+                        arreglo = this.lista.filter(function (cliente) {
+                            return ( cliente.Nombre.toLowerCase() + " " + cliente.Direccion.toLowerCase() ).indexOf(query.toLowerCase()) > -1
+                        })
+                    }
+
+                    return arreglo;
+                } 
+            },
+            created: function () {
+                axios.get(url+"/GetClientes")
+                    .then(function (response) {
+                        console.table(response.data);
+                        app.lista = response.data;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+        });
+    </script>
+}

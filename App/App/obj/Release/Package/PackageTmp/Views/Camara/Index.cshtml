@@ -5,13 +5,13 @@
 }
 
 <h2>Index</h2>
- 
+
 <div class="container">
     <center>
         <div class="row thumbnail" style="background-color:black;">
             <div class="col-lg-6">
                 <br />
-                <div class="thumbnail" >
+                <div class="thumbnail">
                     <!-- Stream video via webcam -->
                     <video id="video" playsinline autoplay></video>
                 </div>
@@ -23,52 +23,88 @@
                     <canvas id="canvas" width="250" height="250"></canvas>
                 </div>
             </div>
-        </div>
-
-        <!-- Trigger canvas web API -->
-        <div class="controller">
-            <button id="snap">Capture</button>
-        </div>
+            <select name="select" id="audioSource"></select><br />
+            <select name="select" id="videoSource"></select><br />
     </center>
 </div>
+<center>
+    <!-- Trigger canvas web API -->
+    <div class="controller">
+        <button id="snap">Capture</button>
+    </div>
+</center>
 
 <script>
     'use strict';
 
-    const video = document.getElementById('video');
-    const canvas = document.getElementById('canvas');
+    var videoElement = document.querySelector('video');
+    var audioSelect = document.querySelector('select#audioSource');
+    var videoSelect = document.querySelector('select#videoSource');
     const snap = document.getElementById("snap");
-    const errorMsgElement = document.querySelector('span#errorMsg');
 
-    const constraints = {
-        audio: false,
-        video: {
-            width: 250, height: 250
-        }
-    };
+    audioSelect.onchange = getStream;
+    videoSelect.onchange = getStream;
 
-    // Access webcam
-    async function init() {
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia(constraints);
-            handleSuccess(stream);
-        } catch (e) {
-            errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+    getStream().then(getDevices).then(gotDevices);
+
+    function getDevices() {
+        // AFAICT in Safari this only gets default devices until gUM is called :/
+        return navigator.mediaDevices.enumerateDevices();
+    }
+
+    function gotDevices(deviceInfos) {
+        window.deviceInfos = deviceInfos; // make available to console
+        console.log('Available input and output devices:', deviceInfos);
+        for (const deviceInfo of deviceInfos) {
+            const option = document.createElement('option');
+            option.value = deviceInfo.deviceId;
+            if (deviceInfo.kind === 'audioinput') {
+                option.text = deviceInfo.label || `Microphone ${audioSelect.length + 1}`;
+                audioSelect.appendChild(option);
+            } else if (deviceInfo.kind === 'videoinput') {
+                option.text = deviceInfo.label || `Camera ${videoSelect.length + 1}`;
+                videoSelect.appendChild(option);
+            }
         }
     }
 
-    // Success
-    function handleSuccess(stream) {
-        window.stream = stream;
-        video.srcObject = stream;
+    function getStream() {
+        if (window.stream) {
+            window.stream.getTracks().forEach(track => {
+                track.stop();
+            });
+        }
+        const audioSource = audioSelect.value;
+        const videoSource = videoSelect.value;
+        const constraints = {
+            audio: { deviceId: audioSource ? { exact: audioSource } : undefined },
+            video: {
+                deviceId: videoSource ? { exact: videoSource } : undefined,
+                width: 250, height: 250
+            }
+        };
+        return navigator.mediaDevices.getUserMedia(constraints).
+            then(gotStream).catch(handleError);
     }
 
-    // Load init
-    init();
+    function gotStream(stream) {
+        window.stream = stream; // make stream available to console
+        audioSelect.selectedIndex = [...audioSelect.options].
+            findIndex(option => option.text === stream.getAudioTracks()[0].label);
+        videoSelect.selectedIndex = [...videoSelect.options].
+            findIndex(option => option.text === stream.getVideoTracks()[0].label);
+        videoElement.srcObject = stream;
+    }
+
+    function handleError(error) {
+        console.error('Error: ', error);
+    }
 
     // Draw image
     var context = canvas.getContext('2d');
     snap.addEventListener("click", function () {
         context.drawImage(video, 0, 0, 250, 250);//(obeto,ubicacionHorizontal,ubicacionVertical,altura,anchura)
     });
+
 </script>
+
