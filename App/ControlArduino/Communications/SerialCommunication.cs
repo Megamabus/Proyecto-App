@@ -28,9 +28,10 @@ namespace DataCube.Server.Communications
             serialConnection.Write(data);
         }
 
-        public static int ReadChar()
+        public static string ReadLine()
         {
-            return serialConnection.ReadChar();
+            string lectura = serialConnection.ReadLine();
+            return lectura ;
         }
     }
 }

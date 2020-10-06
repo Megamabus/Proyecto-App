@@ -39,5 +39,20 @@ namespace DataCube.Server.Controllers
             SerialCommunication.Write($"#RELEI{notification.Id}#\n");
             SerialCommunication.Close();
         }
+
+        [HttpPost]
+        [Route("api/Notification/Humedad")]
+        public string SubmitNotificationHumedad([FromBody] NotificationViewModel notification)
+        {
+            Console.WriteLine($"{notification.Id}");
+            SerialCommunication.Inicialize();
+            SerialCommunication.Write($"#HUMEI{notification.Id}#\n");
+            var lectura = SerialCommunication.ReadLine();
+            SerialCommunication.Close();
+
+            var value = lectura.Substring(0, lectura.Length - 1);
+            return value;
+        }
     }
+    
 }
