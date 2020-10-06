@@ -59,7 +59,7 @@ void loop() {
 
     if (stringComplete)
     {
-        Serial.println("stringcompleto: " + String(inputString));
+        //  Serial.println("stringcompleto: " + String(inputString));
 
         stringComplete = false;
         getCommand();
@@ -94,8 +94,19 @@ void loop() {
                 Reles[rele.id - 1].state = true;
             }
         }
-        else if (commandString.equals("LED2"))
+        else if (commandString.equals("HUME"))
         {
+            Serial.println(String(analogRead(A0)));
+            //    int lecturaHumedad = analogRead(A0);
+            //    if(lecturaHumedad >=1000){
+            //    Serial.println(">>EL SENSOR ESTA DESCONECTADO O FUERA DE SUELO<<");
+            //    }else if(lecturaHumedad <=1000 && lecturaHumedad >= 600){
+            //          Serial.println(">>EL SUELO ESTA SECO. VALOR: <<" + String(lecturaHumedad));
+            //      }else if(lecturaHumedad <600 && lecturaHumedad >= 370){
+            //          Serial.println(">>EL SUELO ESTA HUEDO(recomendado). VALOR: <<" + String(lecturaHumedad));
+            //      }else if(lecturaHumedad <370){
+            //          Serial.println(">>EL SUELO ESTA PRACTICAMENTE SUMERGIDO EN AGUA(no recomendado). VALOR: <<" + String(lecturaHumedad));
+            //      }
         }
 
         inputString = "";
