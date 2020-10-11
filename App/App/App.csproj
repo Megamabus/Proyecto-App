@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.Authentication.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.Authentication.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Authentication.Abstractions.dll</HintPath>
     </Reference>
@@ -160,6 +166,8 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
@@ -172,6 +180,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -237,18 +248,46 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Camara2Controller.cs" />
     <Compile Include="Controllers\CamaraController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HogarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ControlArduinoController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\TacosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ClienteViewModel.cs" />
-    <Compile Include="Models\NotificationViewModel.cs" />
+    <Compile Include="Models\DB_TEST.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_TEST.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB_TEST.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB_TEST.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_TEST.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_data.cs">
+      <DependentUpon>DB_TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_imagen.cs">
+      <DependentUpon>DB_TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\AnimaPictureViewModel.cs" />
+    <Compile Include="Models\ViewModels\CamaraViewModel.cs" />
+    <Compile Include="Models\ViewModels\ClienteViewModel.cs" />
+    <Compile Include="Models\ViewModels\tblProduct.cs" />
+    <Compile Include="Models\ViewModels\NotificationViewModel.cs" />
     <Compile Include="Models\TacosModel.cs" />
+    <Compile Include="Models\ViewModels\Student.cs" />
+    <Compile Include="Models\ViewModels\tbl_dataViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -260,8 +299,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\DB_TEST.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_TEST.edmx</DependentUpon>
+      <LastGenOutput>DB_TEST.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DB_TEST.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_TEST.edmx</DependentUpon>
+      <LastGenOutput>DB_TEST.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\DB_TEST.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB_TEST.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DB_TEST.edmx.diagram">
+      <DependentUpon>DB_TEST.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\Proyecto-App.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -294,9 +350,12 @@
     <Content Include="Views\Camara\Index.cshtml" />
     <Content Include="Views\Hogar\Index.cshtml" />
     <Content Include="Views\Clientes\Index.cshtml" />
+    <Content Include="Views\Image\addnewrecord.cshtml" />
+    <Content Include="Views\Camara2\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Persona\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -310,6 +369,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

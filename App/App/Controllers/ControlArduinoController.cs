@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Helpers;
@@ -67,6 +68,15 @@ namespace App.Controllers
             }
 
             return View("Index");
+        }
+
+        [HttpPost]
+        public void AddItem(FormCollection data)
+        {
+            String userName = data["username"];
+            String userPassword = data["password"];
+
+            
         }
     }
 }

@@ -171,7 +171,6 @@ C:\Users\faacu\source\repos\Proyecto-App\App\App\obj\Debug\App.csproj.CoreCompil
 C:\Users\faacu\source\repos\Proyecto-App\App\App\obj\Debug\App.csproj.CopyComplete
 C:\Users\faacu\source\repos\Proyecto-App\App\App\obj\Debug\App.dll
 C:\Users\faacu\source\repos\Proyecto-App\App\App\obj\Debug\App.pdb
-C:\Users\faacu\source\repos\Proyecto-App\App\App\obj\Debug\App.csprojAssemblyReference.cache
 C:\Users\faacu\source\repos\Proyecto-App\App\App\bin\Microsoft.AspNetCore.Authentication.Abstractions.dll
 C:\Users\faacu\source\repos\Proyecto-App\App\App\bin\Microsoft.AspNetCore.Authentication.Core.dll
 C:\Users\faacu\source\repos\Proyecto-App\App\App\bin\Microsoft.AspNetCore.Authorization.dll
@@ -241,3 +240,11 @@ C:\Users\faacu\source\repos\Proyecto-App\App\App\bin\System.Numerics.Vectors.xml
 C:\Users\faacu\source\repos\Proyecto-App\App\App\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\faacu\source\repos\Proyecto-App\App\App\bin\System.Text.Encodings.Web.xml
 C:\Users\faacu\source\repos\Proyecto-App\App\App\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\faacu\source\repos\Proyecto-App\App\App\bin\EntityFramework.dll
+C:\Users\faacu\source\repos\Proyecto-App\App\App\bin\EntityFramework.SqlServer.dll
+C:\Users\faacu\source\repos\Proyecto-App\App\App\bin\EntityFramework.xml
+C:\Users\faacu\source\repos\Proyecto-App\App\App\bin\EntityFramework.SqlServer.xml
+C:\Users\faacu\source\repos\Proyecto-App\App\App\bin\System.Web.Http.dll
+C:\Users\faacu\source\repos\Proyecto-App\App\App\bin\System.Web.Http.xml
+C:\Users\faacu\source\repos\Proyecto-App\App\App\bin\es\System.Web.Http.resources.dll
+C:\Users\faacu\source\repos\Proyecto-App\App\App\obj\Debug\App.csprojAssemblyReference.cache
