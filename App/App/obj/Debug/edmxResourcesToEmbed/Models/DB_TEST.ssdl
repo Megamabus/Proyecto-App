@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_TESTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_data">
+    <Key>
+      <PropertyRef Name="P_id" />
+    </Key>
+    <Property Name="P_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="P_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="P_DES" Type="nvarchar" MaxLength="500" />
+    <Property Name="P_IMAGE" Type="nvarchar(max)" />
+    <Property Name="img" Type="image" />
+  </EntityType>
+  <EntityType Name="tbl_imagen">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="imagen" Type="image" />
+    <Property Name="imagenString" Type="varchar(max)" />
+  </EntityType>
+  <EntityContainer Name="DB_TESTModelStoreContainer">
+    <EntitySet Name="tbl_data" EntityType="Self.tbl_data" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_imagen" EntityType="Self.tbl_imagen" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

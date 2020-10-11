@@ -5,37 +5,115 @@
 }
 
 <h2>Index</h2>
+<script type="text/javascript" src="~/Scripts/jquery-3.4.1.js"></script>
+<div class="container">
+    <div class="row thumbnail">
+
+        <div class="container">
+            <center>
+                <h1>Captura y guardado de foto en dispositivo</h1>
+                <div class="row thumbnail" style="background-color:black;">
+                    <div class="col-lg-6">
+                        <br />
+                        <div class="thumbnail">
+                            <!-- Stream video via webcam -->
+                            <video id="video" playsinline autoplay></video>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <br />
+                        <div class="thumbnail ">
+                            <!-- Webcam video snapshot -->
+                            <canvas id="myCanvas" width="250" height="250"></canvas>
+                        </div>
+                    </div>
+                    <select name="select" id="audioSource"></select><br />
+                    <select name="select" id="videoSource"></select><br />
+            </center>
+        </div>
+
+        <div class="container">
+            <center>
+                <div class="row thumbnail">
+                    <!-- Trigger canvas web API -->
+                    <button id="snap" type="button">
+                        <span class="glyphicon glyphicon-camera"></span> Tomar foto
+                    </button>
+                    <button id="btnDownload" type="button">
+                        <span class="glyphicon glyphicon-download-alt"></span> Guardar
+                    </button>
+                    <img src="" id="imgConverted" style="float: left; border: 2px solid #00f; margin-left: 10px;">
+                </div>
+            </center>
+        </div>
+
+    </div>
+</div>
 
 <div class="container">
-    <center>
-        <div class="row thumbnail" style="background-color:black;">
-            <div class="col-lg-6">
-                <br />
-                <div class="thumbnail">
-                    <!-- Stream video via webcam -->
-                    <video id="video" playsinline autoplay></video>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <br />
-                <div class="thumbnail ">
-                    <!-- Webcam video snapshot -->
-                    <canvas id="canvas" width="250" height="250"></canvas>
-                </div>
-            </div>
-            <select name="select" id="audioSource"></select><br />
-            <select name="select" id="videoSource"></select><br />
-    </center>
-</div>
-<center>
-    <!-- Trigger canvas web API -->
-    <div class="controller">
-        <button id="snap">Capture</button>
-    </div>
-</center>
+    <div class="row thumbnail">
+        <div class="container">
+            <center>
+                <h1>Carga y guardado de imagen en DataBase</h1>
+                <div class="row thumbnail">
+                    <form id="AddNewStudent" method="post" enctype="multipart/form-data" onsubmit="return AjaxPost(this)">
+                        <label>1ro carga foto:</label>
+                        <input id="ImageUpload" name="ImageUpload" class="form-control" type="file" />
 
+                        <button class="btn btn-Danger" style="width:100%;margin-top:10px;">Add</button>
+                    </form>
+                </div>
+                <div class="row thumbnail">
+                    <div class="container">
+                        <div class="row">
+                            <label>2do busca foto:</label>
+                            <br />  +----
+                            <img id="imgViewer" width="200" height="200" style="border: 1px solid #000000;" />
+
+                        </div>
+                        <div class="row">
+                            <button id="btnRead" class="btn btn-Danger" style="width:100%;margin-top:10px;">Read Information</button>
+
+                        </div>
+                    </div>
+                </div>
+            </center>
+        </div>
+    </div>
+</div>
 <script>
     'use strict';
+    function AjaxPost(formData) {
+
+        var ajaxConfig = {
+            type: "POST",
+            url: "/Camara/GuardarImagen",
+            data: new FormData(formData),
+            success: function (result) {
+                alert(result);
+                window.location.href = "/Camara/GuardarImagen";
+            }
+        }
+        if ($(formData).attr('enctype') == "multipart/form-data") {
+            ajaxConfig["contentType"] = false;
+            ajaxConfig["processData"] = false;
+        }
+        $.ajax(ajaxConfig);
+        return false;
+    }
+
+    $("#btnRead").click(function () {
+        $.ajax({
+            type: "GET",
+            url: "/Camara/GetImageCamara",
+            success: function (data) {
+                $("#imgViewer").attr("src", "data:image/jpg;base64," + data.ImageUpload + "");
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+    });
 
     var videoElement = document.querySelector('video');
     var audioSelect = document.querySelector('select#audioSource');
@@ -101,10 +179,48 @@
     }
 
     // Draw image
-    var context = canvas.getContext('2d');
+    var context = myCanvas.getContext('2d');
     snap.addEventListener("click", function () {
         context.drawImage(video, 0, 0, 250, 250);//(obeto,ubicacionHorizontal,ubicacionVertical,altura,anchura)
     });
 
+    const btnDownload = document.getElementById('btnDownload');
+    const imgConverted = document.getElementById('imgConverted');
+
+    document.body.appendChild(imgConverted);
+
+    btnDownload.addEventListener("click", function () {
+        if (window.navigator.msSaveBlob) {
+            window.navigator.msSaveBlob(myCavas.msToBlob(), "canvas-image.png")
+        } else {
+            const a = document.createElement("a");
+
+            document.body.appendChild(a);
+            a.href = myCanvas.toDataURL("image/jpeg");
+            a.download = "canvas-image.jpg";
+            a.click();
+            document.body.removeChild(a);
+        }
+    });
+
+
+    function submitform() {
+        var postdata = $('#login-form').serialize();
+        var file = document.getElementById('files').files[0];
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var fd = new FormData();
+        fd.append("files", file);
+        fd.append("username", username);
+        fd.append("password", password);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/Home/AddItem", false);
+        xhr.send(fd);
+
+    }
+
 </script>
 
+<script type="text/javascript">
+
+</script>

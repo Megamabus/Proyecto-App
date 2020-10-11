@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_TESTModelStoreContainer" CdmEntityContainer="DB_TESTEntities">
+    <EntitySetMapping Name="tbl_data">
+      <EntityTypeMapping TypeName="DB_TESTModel.tbl_data">
+        <MappingFragment StoreEntitySet="tbl_data">
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="P_id" ColumnName="P_id" />
+          <ScalarProperty Name="P_name" ColumnName="P_name" />
+          <ScalarProperty Name="P_DES" ColumnName="P_DES" />
+          <ScalarProperty Name="P_IMAGE" ColumnName="P_IMAGE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_imagen">
+      <EntityTypeMapping TypeName="DB_TESTModel.tbl_imagen">
+        <MappingFragment StoreEntitySet="tbl_imagen">
+          <ScalarProperty Name="imagenString" ColumnName="imagenString" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
