@@ -63,7 +63,7 @@ namespace App.Controllers
                     catch (Exception e )
                     {
 
-                        path = "-1";
+                        path = "-1" + e.ToString();
                     }
 
                 }
