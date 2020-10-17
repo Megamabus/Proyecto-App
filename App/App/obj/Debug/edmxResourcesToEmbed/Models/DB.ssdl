@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Total" Type="float" Nullable="false" />
+    <Property Name="FechaCompra" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FacturaProducto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="IdFactura" Type="int" />
+    <Property Name="IdProducto" Type="int" />
+    <Property Name="Estado" Type="int" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Imagen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DatosImagen" Type="image" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Edad" Type="int" Nullable="false" />
+    <Property Name="Imagen" Type="image" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar(max)" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="IdImagen" Type="int" />
+    <Property Name="FechaVencimiento" Type="date" />
+    <Property Name="Precio" Type="float" />
+    <Property Name="IdFactura" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_FacturaProducto_Factura">
+    <End Role="Factura" Type="Self.Factura" Multiplicity="0..1" />
+    <End Role="FacturaProducto" Type="Self.FacturaProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Factura">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FacturaProducto">
+        <PropertyRef Name="IdFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FacturaProducto_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+    <End Role="FacturaProducto" Type="Self.FacturaProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FacturaProducto">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_Imagen">
+    <End Role="Imagen" Type="Self.Imagen" Multiplicity="0..1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Imagen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="IdImagen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbAppModelStoreContainer">
+    <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FacturaProducto" EntityType="Self.FacturaProducto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Imagen" EntityType="Self.Imagen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_FacturaProducto_Factura" Association="Self.FK_FacturaProducto_Factura">
+      <End Role="Factura" EntitySet="Factura" />
+      <End Role="FacturaProducto" EntitySet="FacturaProducto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FacturaProducto_Producto" Association="Self.FK_FacturaProducto_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="FacturaProducto" EntitySet="FacturaProducto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_Imagen" Association="Self.FK_Producto_Imagen">
+      <End Role="Imagen" EntitySet="Imagen" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

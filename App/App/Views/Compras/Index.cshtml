@@ -1,0 +1,40 @@
+﻿@model List<App.Models.ViewModels.FacturaViewModel>
+@{
+    ViewBag.Title = "GuardarFactura";
+}
+
+<h2>GuardarFactura</h2>
+
+<a href="~/Compras/Nuevo" class="btn btn-primary">Nuevo</a>
+@using (Html.BeginForm("AgregarFactura", "Compras", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Total</td>
+                        <td>@item.FechaCompra</td>
+                        <td>
+                            <a class="btn btn-default" href="~/Compras/Edit/@item.Id">Edit</a>
+                            <a class="btn btn-danger" href="~/Compras/Delete/@item.Id">Delete</a>
+                        </td>   
+                    </tr>
+                    }
+                    
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+}
+

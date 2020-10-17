@@ -13,10 +13,10 @@ namespace App.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DB_TESTEntities : DbContext
+    public partial class dbAppEntities1 : DbContext
     {
-        public DB_TESTEntities()
-            : base("name=DB_TESTEntities")
+        public dbAppEntities1()
+            : base("name=dbAppEntities1")
         {
         }
     
@@ -25,9 +25,11 @@ namespace App.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tbl_data> tbl_data { get; set; }
-        public virtual DbSet<tbl_imagen> tbl_imagen { get; set; }
-
-        public System.Data.Entity.DbSet<App.Models.ViewModels.FacturaViewModel> FacturaViewModels { get; set; }
+        public virtual DbSet<Factura> Facturas { get; set; }
+        public virtual DbSet<FacturaProducto> FacturaProductoes { get; set; }
+        public virtual DbSet<Imagen> Imagens { get; set; }
+        public virtual DbSet<Persona> Personas { get; set; }
+        public virtual DbSet<Producto> Productoes { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

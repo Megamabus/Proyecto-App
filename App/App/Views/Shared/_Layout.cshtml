@@ -25,11 +25,19 @@
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("ControlArduino", "Index", "ControlArduino")</li>
-                    <li>@Html.ActionLink("Camara", "Index", "Camara")</li>
                     <li>@Html.ActionLink("Camara2", "Index", "Camara2")</li>
                     <li>@Html.ActionLink("Image", "addnewrecord", "Image")</li>
                     <li>@Html.ActionLink("Hogar", "Index", "Hogar")</li>
+                    <li>@Html.ActionLink("Compras", "Index", "Compras")</li>
+                    <li>@Html.ActionLink("Nuevo", "Index", "Compras")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Listos <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("ControlArduino", "Index", "ControlArduino")</li>
+                            <li>@Html.ActionLink("Camara", "Index", "Camara")</li>
+                            @*<li role="separator" class="divider"></li>*@
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -43,6 +51,7 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

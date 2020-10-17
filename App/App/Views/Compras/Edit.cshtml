@@ -1,0 +1,31 @@
+﻿@model App.Models.ViewModels.FacturaViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Compras", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            @Html.HiddenFor(x => x.Id)
+            <div>
+                @Html.LabelFor(x => x.Total)
+                @Html.TextBoxFor(x => x.Total, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Total, null, new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(x => x.FechaCompra)
+                @Html.EditorFor(x => x.FechaCompra, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.FechaCompra, null, new { @class = "text-danger" })
+            </div>
+            <br />
+            <div>
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+
+        </div>
+    </div>
+}

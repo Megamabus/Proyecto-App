@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Total" Type="Double" Nullable="false" />
+    <Property Name="FechaCompra" Type="DateTime" Precision="3" Nullable="false" />
+    <NavigationProperty Name="FacturaProductoes" Relationship="Self.FK_FacturaProducto_Factura" FromRole="Factura" ToRole="FacturaProducto" />
+  </EntityType>
+  <EntityType Name="FacturaProducto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="IdFactura" Type="Int32" />
+    <Property Name="IdProducto" Type="Int32" />
+    <Property Name="Estado" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Factura" Relationship="Self.FK_FacturaProducto_Factura" FromRole="FacturaProducto" ToRole="Factura" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK_FacturaProducto_Producto" FromRole="FacturaProducto" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Imagen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DatosImagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Productoes" Relationship="Self.FK_Producto_Imagen" FromRole="Imagen" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Edad" Type="Int32" Nullable="false" />
+    <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="IdImagen" Type="Int32" />
+    <Property Name="FechaVencimiento" Type="DateTime" Precision="0" />
+    <Property Name="Precio" Type="Double" />
+    <Property Name="IdFactura" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="FacturaProductoes" Relationship="Self.FK_FacturaProducto_Producto" FromRole="Producto" ToRole="FacturaProducto" />
+    <NavigationProperty Name="Imagen" Relationship="Self.FK_Producto_Imagen" FromRole="Producto" ToRole="Imagen" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_FacturaProducto_Factura">
+    <End Role="Factura" Type="Self.Factura" Multiplicity="0..1" />
+    <End Role="FacturaProducto" Type="Self.FacturaProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Factura">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FacturaProducto">
+        <PropertyRef Name="IdFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FacturaProducto_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+    <End Role="FacturaProducto" Type="Self.FacturaProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FacturaProducto">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_Imagen">
+    <End Role="Imagen" Type="Self.Imagen" Multiplicity="0..1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Imagen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="IdImagen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbAppEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Facturas" EntityType="Self.Factura" />
+    <EntitySet Name="FacturaProductoes" EntityType="Self.FacturaProducto" />
+    <EntitySet Name="Imagens" EntityType="Self.Imagen" />
+    <EntitySet Name="Personas" EntityType="Self.Persona" />
+    <EntitySet Name="Productoes" EntityType="Self.Producto" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_FacturaProducto_Factura" Association="Self.FK_FacturaProducto_Factura">
+      <End Role="Factura" EntitySet="Facturas" />
+      <End Role="FacturaProducto" EntitySet="FacturaProductoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FacturaProducto_Producto" Association="Self.FK_FacturaProducto_Producto">
+      <End Role="Producto" EntitySet="Productoes" />
+      <End Role="FacturaProducto" EntitySet="FacturaProductoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_Imagen" Association="Self.FK_Producto_Imagen">
+      <End Role="Imagen" EntitySet="Imagens" />
+      <End Role="Producto" EntitySet="Productoes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
